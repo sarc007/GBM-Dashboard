@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dashboardDataSet1" targetNamespace="http://tempuri.org/dashboardDataSet1.xsd" xmlns:mstns="http://tempuri.org/dashboardDataSet1.xsd" xmlns="http://tempuri.org/dashboardDataSet1.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="dashboardConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="dashboardConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.GBM_Dashboard.Properties.Settings.GlobalReference.Default.dashboardConnectionString" Provider="MySql.Data.MySqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="gbm_ivaTableAdapter" GeneratorDataComponentClassName="gbm_ivaTableAdapter" Name="gbm_iva" UserDataComponentName="gbm_ivaTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="dashboardConnectionString (Settings)" DbObjectName="dashboard.gbm_iva" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT `Name`, `Image_path`, `active_fld` FROM `gbm_iva`</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Name" DataSetColumn="Name" />
+              <Mapping SourceColumn="Image_path" DataSetColumn="Image_path" />
+              <Mapping SourceColumn="active_fld" DataSetColumn="active_fld" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dashboardDataSet1" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="dashboardDataSet1" msprop:Generator_UserDSName="dashboardDataSet1">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="gbm_iva" msprop:Generator_TableClassName="gbm_ivaDataTable" msprop:Generator_TableVarName="tablegbm_iva" msprop:Generator_TablePropName="gbm_iva" msprop:Generator_RowDeletingName="gbm_ivaRowDeleting" msprop:Generator_RowChangingName="gbm_ivaRowChanging" msprop:Generator_RowEvHandlerName="gbm_ivaRowChangeEventHandler" msprop:Generator_RowDeletedName="gbm_ivaRowDeleted" msprop:Generator_UserTableName="gbm_iva" msprop:Generator_RowChangedName="gbm_ivaRowChanged" msprop:Generator_RowEvArgName="gbm_ivaRowChangeEvent" msprop:Generator_RowClassName="gbm_ivaRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Name" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" msprop:Generator_UserColumnName="Name">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Image_path" msprop:Generator_ColumnVarNameInTable="columnImage_path" msprop:Generator_ColumnPropNameInRow="Image_path" msprop:Generator_ColumnPropNameInTable="Image_pathColumn" msprop:Generator_UserColumnName="Image_path">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1000" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="active_fld" msprop:Generator_ColumnVarNameInTable="columnactive_fld" msprop:Generator_ColumnPropNameInRow="active_fld" msprop:Generator_ColumnPropNameInTable="active_fldColumn" msprop:Generator_UserColumnName="active_fld" type="xs:int" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
