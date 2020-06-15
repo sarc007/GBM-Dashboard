@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main_Form));
-            this.fluentDesignFormContainer1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormContainer();
+            this.container = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormContainer();
             this.Content = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -39,48 +39,53 @@
             this.accordionControlElement3 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionControlElement4 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.fluentDesignFormControl1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl();
-            this.fluentDesignFormContainer1.SuspendLayout();
+            this.container.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fluentDesignFormControl1)).BeginInit();
             this.SuspendLayout();
             // 
-            // fluentDesignFormContainer1
+            // container
             // 
-            this.fluentDesignFormContainer1.Controls.Add(this.Content);
-            this.fluentDesignFormContainer1.Controls.Add(this.panel1);
-            this.fluentDesignFormContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.fluentDesignFormContainer1.Location = new System.Drawing.Point(228, 39);
-            this.fluentDesignFormContainer1.Name = "fluentDesignFormContainer1";
-            this.fluentDesignFormContainer1.Size = new System.Drawing.Size(967, 758);
-            this.fluentDesignFormContainer1.TabIndex = 0;
+            this.container.Controls.Add(this.Content);
+            this.container.Controls.Add(this.panel1);
+            this.container.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.container.Location = new System.Drawing.Point(249, 31);
+            this.container.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.container.Name = "container";
+            this.container.Size = new System.Drawing.Size(1156, 815);
+            this.container.TabIndex = 0;
             // 
             // Content
             // 
             this.Content.AutoScroll = true;
             this.Content.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Content.Location = new System.Drawing.Point(0, 88);
+            this.Content.Location = new System.Drawing.Point(0, 72);
+            this.Content.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Content.Name = "Content";
-            this.Content.Size = new System.Drawing.Size(967, 670);
+            this.Content.Size = new System.Drawing.Size(1156, 743);
             this.Content.TabIndex = 1;
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.Silver;
+            this.panel1.BackColor = System.Drawing.SystemColors.Desktop;
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(967, 88);
+            this.panel1.Size = new System.Drawing.Size(1156, 72);
             this.panel1.TabIndex = 0;
+            this.panel1.Layout += new System.Windows.Forms.LayoutEventHandler(this.panel1_Layout);
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(283, 3);
+            this.pictureBox1.Location = new System.Drawing.Point(431, 0);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(254, 82);
+            this.pictureBox1.Size = new System.Drawing.Size(218, 67);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -90,10 +95,11 @@
             this.accordionControl1.Dock = System.Windows.Forms.DockStyle.Left;
             this.accordionControl1.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
             this.accordionControlElement1});
-            this.accordionControl1.Location = new System.Drawing.Point(0, 39);
+            this.accordionControl1.Location = new System.Drawing.Point(0, 31);
+            this.accordionControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.accordionControl1.Name = "accordionControl1";
             this.accordionControl1.ScrollBarMode = DevExpress.XtraBars.Navigation.ScrollBarMode.Touch;
-            this.accordionControl1.Size = new System.Drawing.Size(228, 758);
+            this.accordionControl1.Size = new System.Drawing.Size(249, 815);
             this.accordionControl1.TabIndex = 1;
             this.accordionControl1.ViewType = DevExpress.XtraBars.Navigation.AccordionControlViewType.HamburgerMenu;
             // 
@@ -131,27 +137,29 @@
             // 
             this.fluentDesignFormControl1.FluentDesignForm = this;
             this.fluentDesignFormControl1.Location = new System.Drawing.Point(0, 0);
+            this.fluentDesignFormControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.fluentDesignFormControl1.Name = "fluentDesignFormControl1";
-            this.fluentDesignFormControl1.Size = new System.Drawing.Size(1195, 39);
+            this.fluentDesignFormControl1.Size = new System.Drawing.Size(1405, 31);
             this.fluentDesignFormControl1.TabIndex = 2;
             this.fluentDesignFormControl1.TabStop = false;
             // 
             // Main_Form
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1195, 797);
-            this.ControlContainer = this.fluentDesignFormContainer1;
-            this.Controls.Add(this.fluentDesignFormContainer1);
+            this.ClientSize = new System.Drawing.Size(1405, 846);
+            this.ControlContainer = this.container;
+            this.Controls.Add(this.container);
             this.Controls.Add(this.accordionControl1);
             this.Controls.Add(this.fluentDesignFormControl1);
             this.FluentDesignFormControl = this.fluentDesignFormControl1;
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Main_Form";
             this.NavigationControl = this.accordionControl1;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Main_Form";
             this.Load += new System.EventHandler(this.Main_Form_Load);
-            this.fluentDesignFormContainer1.ResumeLayout(false);
+            this.container.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).EndInit();
@@ -161,15 +169,15 @@
         }
 
         #endregion
-        private DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormContainer fluentDesignFormContainer1;
+        private DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormContainer container;
         private DevExpress.XtraBars.Navigation.AccordionControl accordionControl1;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement1;
         private DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl fluentDesignFormControl1;
         private System.Windows.Forms.Panel Content;
-        private System.Windows.Forms.Panel panel1;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement2;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement3;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement4;
+        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

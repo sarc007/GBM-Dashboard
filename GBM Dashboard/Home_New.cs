@@ -56,7 +56,7 @@ namespace GBM_Dashboard
             //DbConnection dbCon = new DbConnection();
             //string connetionString = dbCon.getConnection();
             string connetionString = "server=localhost;database=dashboard;uid=root;pwd=admin;";
-            MessageBox.Show(connetionString);
+            //MessageBox.Show(connetionString);
             MySqlConnection cnn = new MySqlConnection(connetionString);
             MySqlDataReader row, row2;
             MySqlCommand cmd = new MySqlCommand();
@@ -65,7 +65,7 @@ namespace GBM_Dashboard
             //camera_checkbox.Items.Add("SELECT ALL", true);
             //videos_checkbox.Items.Add("SELECT ALL", true);
 
-            string get_gbm_iva_id = "SELECT ID FROM gbm_iva where Name = '" + GBM_IVA.Home_New + "';";
+            string get_gbm_iva_id = "SELECT ID FROM gbm_iva where Name = '" + GBM_IVA.Form2 + "';";
             //MessageBox.Show(get_gbm_iva_id);
             cmd = new MySqlCommand(get_gbm_iva_id, cnn);
             row = cmd.ExecuteReader();

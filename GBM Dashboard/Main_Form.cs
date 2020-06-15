@@ -17,6 +17,8 @@ namespace GBM_Dashboard
             InitializeComponent();
         }
 
+        
+
         private void accordionControlElement2_Click(object sender, EventArgs e)
         {
             GBM_IVA gBM_IVA = new GBM_IVA();
@@ -25,14 +27,30 @@ namespace GBM_Dashboard
 
         private void Main_Form_Load(object sender, EventArgs e)
         {
+            this.WindowState = FormWindowState.Maximized;
             GBM_IVA gBM_IVA = new GBM_IVA();
             MainControlClass.showControl(gBM_IVA, Content);
         }
 
         private void accordionControlElement4_Click(object sender, EventArgs e)
         {
-            ///Configuration configuration = new Configuration();
-            //MainControlClass.showControl(configuration, Content);
+            Configuration configuration = new Configuration();
+            MainControlClass.showControl(configuration, Content);
+            //configuration.TopLevel = false;
+            //if (!container.Controls.Contains(Configuration.Instance))
+            //{
+            //    container.Controls.Add(Configuration.Instance);
+            //    Configuration.Instance.Dock = DockStyle.Fill;
+            //    Configuration.Instance.BringToFront();
+            //}
+            //Configuration.Instance.BringToFront();
+
+        }
+
+        private void panel1_Layout(object sender, LayoutEventArgs e)
+        {
+            //gbmlogo.Location = new Point((Main_Form.width / 2) - Main_Form.coordionWidth, 0);
+            pictureBox1.Location = new Point(panel1.Width / 3);
         }
     }
 }

@@ -118,16 +118,17 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dashboardDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="dashboardDataSet1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>dashboardDataSet1.xsd</DependentUpon>
-    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form2.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Form2.Designer.cs">
+      <DependentUpon>Form2.cs</DependentUpon>
     </Compile>
     <Compile Include="GBM_IVA.cs">
       <SubType>UserControl</SubType>
@@ -155,6 +156,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form2.resx">
+      <DependentUpon>Form2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GBM_IVA.resx">
       <DependentUpon>GBM_IVA.cs</DependentUpon>
@@ -185,17 +189,6 @@
     </None>
     <None Include="dashboardDataSet.xss">
       <DependentUpon>dashboardDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="dashboardDataSet1.xsc">
-      <DependentUpon>dashboardDataSet1.xsd</DependentUpon>
-    </None>
-    <None Include="dashboardDataSet1.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>dashboardDataSet1.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="dashboardDataSet1.xss">
-      <DependentUpon>dashboardDataSet1.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

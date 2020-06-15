@@ -33,7 +33,9 @@ namespace GBM_Dashboard
 
             //lblLogo.Size = new Size(175, 56 );
             //lblLogo.Image = new Bitmap(image1, lblLogo.Size); ;
-            string connetionString = "server=localhost;database=dashboard;uid=root;pwd=admin;";
+            //string connetionString = "server=localhost;database=dashboard;uid=root;pwd=admin;";
+            DbConnection dbCon = new DbConnection();
+            string connetionString = dbCon.getConnection();
             MySqlConnection cnn = new MySqlConnection(connetionString);
             MySqlDataReader row;
             MySqlCommand cmd = new MySqlCommand();
@@ -44,6 +46,7 @@ namespace GBM_Dashboard
             MySqlDataReader row1;
             row1 = cmd.ExecuteReader();
 
+            List<int> gbm_iva_id = new List<int>();
             List<string> gbm_iva_name = new List<string>();
             List<string> gbm_iva_img_path = new List<string>();
             List<int> usecase_count = new List<int>();
@@ -76,6 +79,7 @@ namespace GBM_Dashboard
 
             while (row.Read())
             {
+                gbm_iva_id.Add(Convert.ToInt32(row["id"]));
                 gbm_iva_name.Add(row["Name"].ToString());
                 gbm_iva_img_path.Add(row["Image_path"].ToString());
             }
@@ -94,6 +98,7 @@ namespace GBM_Dashboard
                 //
                 //
                 use_case_pictures[i] = new PictureBox();
+                use_case_pictures[i].Tag = gbm_iva_id[i];
                 use_case_pictures[i].Dock = System.Windows.Forms.DockStyle.Top;
                 use_case_pictures[i].Image = Image.FromFile(gbm_iva_img_path[i]);
                 use_case_pictures[i].Name = gbm_iva_name[i].ToString();
@@ -109,6 +114,7 @@ namespace GBM_Dashboard
                 //
                 //
                 var temp = new Label();
+                temp.Tag = gbm_iva_id[i];
                 temp.Dock = System.Windows.Forms.DockStyle.Bottom;
                 temp.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
                 temp.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
@@ -144,14 +150,16 @@ namespace GBM_Dashboard
             (sender as Label).ForeColor = Color.Black;
         }
 
-        public static string Home_New = "";
+        public static string Form2 = "";
+
+        public static int id = -1;
 
         private void gbm_label_click(object sender, EventArgs e)
         {
-            Home_New = (sender as Label).Name;
-            Home_New home = new Home_New();
-            MainControlClass.showControl(home, Content);
-            //home.Show();
+            Form2 = (sender as Label).Name;
+            id = Convert.ToInt32((sender as Label).Tag);
+            Form2 form2 = new Form2();
+            MainControlClass.showControl(form2, Content);
         }
 
         private void pictureBox1_MouseEnter(object sender, EventArgs e)
@@ -173,11 +181,10 @@ namespace GBM_Dashboard
 
         private void gbm_picture_click(object sender, EventArgs e)
         {
-            Home_New = (sender as PictureBox).Name;
-            Home_New home = new Home_New();
-            MainControlClass.showControl(home, Content);
-            //home.WindowState = FormWindowState.Maximized;
-            //home.Show();
+            Form2 = (sender as PictureBox).Name;
+            id = Convert.ToInt32((sender as PictureBox).Tag);
+            Form2 form2 = new Form2();
+            MainControlClass.showControl(form2, Content);
         }
     }
 }

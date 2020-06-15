@@ -25,8 +25,8 @@ namespace GBM_Dashboard
                 //MessageBox.Show("workingDirectory:" + workingDirectory);
                 //MessageBox.Show("projectDirectory:" + projectDirectory);
                 XmlDocument xmlDoc = new XmlDocument();
-                xmlDoc.Load(workingDirectory + "\\db_connection\\connection.xml");
-                XmlNodeList nodeList = xmlDoc.DocumentElement.SelectNodes("\\DbConnection\\MYSQL");
+                xmlDoc.Load(workingDirectory + "\\dbconnection\\connection.xml");
+                XmlNodeList nodeList = xmlDoc.DocumentElement.SelectNodes("/DbConnection/MYSQL");
                 //string proID = "", proName = "", price = "";
                 foreach (XmlNode node in nodeList)
                 {
