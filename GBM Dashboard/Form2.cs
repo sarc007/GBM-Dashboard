@@ -8,6 +8,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Net;
@@ -20,6 +21,7 @@ namespace GBM_Dashboard
     public partial class Form2 : UserControl
     {
         Socket socket = null;
+        private Thread timerThread;
 
         public Form2()
         {
@@ -265,16 +267,6 @@ namespace GBM_Dashboard
             gridView5.SelectAll();
         }
 
-        private void radioButton4_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void radioButton3_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void gridControl5_MouseDown(object sender, MouseEventArgs e)
         {
                     
@@ -300,7 +292,7 @@ namespace GBM_Dashboard
                 {
                     axWindowsMediaPlayer1.Visible = false;
                     pictureEdit1.Visible = true;
-
+                    //MessageBox.Show(row[2].ToString());
                     pictureEdit1.Image = Image.FromFile(row[2].ToString());
 
                 }
@@ -467,12 +459,34 @@ namespace GBM_Dashboard
 
                 try
                 {
-                    StartClient(ip, user, pwd, port);
+                    startThread(ip, user, pwd, port);
                 }
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex.ToString());
                 }
+            }
+        }
+
+        private void startThread(string ip, string user, string pwd, string port)
+        {
+            stopThread();
+            btnStart.Enabled = false;
+            btnStop.Enabled = true;
+            timerThread = new Thread(() => StartClient(ip, user, pwd, port));
+            timerThread.IsBackground = true;
+            timerThread.Start();
+        }
+
+        private void stopThread()
+        {
+            btnStart.Enabled = true;
+            //pictureBox1.Image.Dispose();
+            btnStop.Enabled = false;
+            if (timerThread != null)
+            {
+                timerThread.Interrupt();
+                timerThread = null;
             }
         }
 
@@ -632,6 +646,21 @@ namespace GBM_Dashboard
         private void gridControl2_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void groupBox3_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureEdit1_EditValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnStop_Click(object sender, EventArgs e)
+        {
+            pictureBox1.Image.Dispose();
         }
     }
 }
