@@ -57,8 +57,14 @@ namespace GBM_Dashboard
 
         private void gridView1_SelectionChanged(object sender, DevExpress.Data.SelectionChangedEventArgs e)
         {
-
-            
+            if (rdBtn_img.Checked)
+            {
+                pictureEdit1.Image = null;
+            }
+            else if (rdBtn_vid.Checked)
+            {
+                axWindowsMediaPlayer1.URL = null;
+            }
             string str_config_type_id="";
             getlistofAppID();
             for (int i=0;i<applist.Count;i++)
@@ -71,7 +77,7 @@ namespace GBM_Dashboard
                 {
                     str_config_type_id = str_config_type_id + ", " + applist[i].ToString() ;
                 }
-
+                
             }
             
             ColumnView view = gridView2;
@@ -154,6 +160,14 @@ namespace GBM_Dashboard
         }
         private void gridView2_SelectionChanged(object sender, DevExpress.Data.SelectionChangedEventArgs e)
         {
+            if (rdBtn_img.Checked)
+            {
+                pictureEdit1.Image = null;
+            }
+            else if (rdBtn_vid.Checked)
+            {
+                axWindowsMediaPlayer1.URL = null;
+            }
             string str_config_id = "";
             getlistofSiteID();
             for (int i = 0; i < sitelist.Count; i++)
@@ -181,6 +195,14 @@ namespace GBM_Dashboard
         }
         private void gridView3_SelectionChanged(object sender, DevExpress.Data.SelectionChangedEventArgs e)
         {
+            if (rdBtn_img.Checked)
+            {
+                pictureEdit1.Image = null;
+            }
+            else if (rdBtn_vid.Checked)
+            {
+                axWindowsMediaPlayer1.URL = null;
+            }
             string str_camera_config_id = "";
             getlistofCameraID();
             for (int i = 0; i < camlist.Count; i++)
@@ -206,10 +228,17 @@ namespace GBM_Dashboard
 
             
         }
-
         private void gridView4_SelectionChanged(object sender, DevExpress.Data.SelectionChangedEventArgs e)
         {
-            
+            if (rdBtn_img.Checked)
+            {
+                pictureEdit1.Image = null;
+            }
+            else if(rdBtn_vid.Checked)
+            {
+                axWindowsMediaPlayer1.URL = null;
+            }
+
             string str_fk_video_id = "";
             getlistofVideoID();
             for (int i = 0; i < vidlist.Count; i++)
@@ -243,6 +272,7 @@ namespace GBM_Dashboard
             view.ActiveFilter.Add(view.Columns["config_type_id"],
               new ColumnFilterInfo("[fk_gbm_iva_id] = " + int_gbm_iva_id.ToString(), ""));
              gridView1.SelectAll();
+            
 
         }
 
@@ -654,7 +684,7 @@ namespace GBM_Dashboard
 
         private void pictureEdit1_EditValueChanged(object sender, EventArgs e)
         {
-
+           
         }
 
         private void btnStop_Click(object sender, EventArgs e)
