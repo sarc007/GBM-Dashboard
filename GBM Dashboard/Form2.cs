@@ -217,7 +217,6 @@ namespace GBM_Dashboard
                 if (i == 0)
                 {
                     str_fk_video_id = vidlist[i].ToString();
-
                 }
                 else
                 {

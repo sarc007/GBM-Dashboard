@@ -170,7 +170,7 @@
             this.Name = "Main_Form";
             this.NavigationControl = this.accordionControl1;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Main_Form";
+            this.Text = "GBM IVA";
             this.Load += new System.EventHandler(this.Main_Form_Load);
             this.container.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
