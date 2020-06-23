@@ -204,6 +204,7 @@ namespace GBM_Dashboard
                 axWindowsMediaPlayer1.URL = null;
             }
             string str_camera_config_id = "";
+            
             getlistofCameraID();
             for (int i = 0; i < camlist.Count; i++)
             {
@@ -216,8 +217,7 @@ namespace GBM_Dashboard
                     str_camera_config_id = str_camera_config_id + ", " + camlist[i].ToString();
                 }
             }
-           
-
+             
             ColumnView view = gridView4;
             if (view.ActiveFilterString.Length > 0)
             {
@@ -226,7 +226,15 @@ namespace GBM_Dashboard
             view.ActiveFilter.Add(view.Columns["camera_config_id"],
               new ColumnFilterInfo("[camera_config_id] in (" + str_camera_config_id + ")", ""));
 
-            
+            view= gridView9;
+            if (view.ActiveFilterString.Length > 0)
+            {
+                view.ActiveFilter.Remove(view.Columns["ID"]);
+            }
+            view.ActiveFilter.Add(view.Columns["ID"],
+              new ColumnFilterInfo("[ID] in (" + str_camera_config_id + ")", ""));
+
+
         }
         private void gridView4_SelectionChanged(object sender, DevExpress.Data.SelectionChangedEventArgs e)
         {
@@ -261,6 +269,8 @@ namespace GBM_Dashboard
             }
             view.ActiveFilter.Add(view.Columns["fk_video_id"],
               new ColumnFilterInfo("[fk_video_id] in (" + str_fk_video_id + ")", ""));
+
+             
         }
         private void gridControl1_Load(object sender, EventArgs e)
         {
@@ -453,7 +463,7 @@ namespace GBM_Dashboard
             axWindowsMediaPlayer1.Visible = false;
             groupBox2.Visible = false;
             online_panel.Visible = true;
-            gridView3.OptionsSelection.MultiSelect = false;
+            gridView3.OptionsSelection.MultiSelect = true;
 
         }
 
@@ -467,41 +477,68 @@ namespace GBM_Dashboard
             online_panel.Visible = false;
         }
 
+        private void gridView9_RowClick(object sender, RowClickEventArgs e)
+        {
+            ArrayList rows = new ArrayList();
+            string ip = "", port = "", user = "", pwd = "";
+            Int32[] selectedRowHandles = gridView3.GetSelectedRows();
+            for (int i = 0; i < selectedRowHandles.Length; i++)
+            {
+                int selectedRowHandle = selectedRowHandles[i];
+                rows.Add(gridView3.GetDataRow(selectedRowHandle));
+                DataRow row = rows[i] as DataRow;
+                ip = row[2].ToString();
+                user = row[3].ToString();
+                pwd = row[4].ToString();
+                port = row[5].ToString();
+                //MessageBox.Show(ip + ":" + port + ":"+user+":"+pwd);
+            }
+
+            try
+            {
+                startThread(ip, user, pwd, port);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+        }
+
         private void gridView3_RowClick(object sender, RowClickEventArgs e)
         {
-            if (rdbtn_online.Checked)
-            {
-                ArrayList rows = new ArrayList();
-                string ip = "", port = "", user = "", pwd = "";
-                Int32[] selectedRowHandles = gridView3.GetSelectedRows();
-                for (int i = 0; i < selectedRowHandles.Length; i++)
-                {
-                    int selectedRowHandle = selectedRowHandles[i];
-                    rows.Add(gridView3.GetDataRow(selectedRowHandle));
-                    DataRow row = rows[i] as DataRow;
-                    ip = row[2].ToString();
-                    user = row[3].ToString();
-                    pwd = row[4].ToString();
-                    port = row[5].ToString();
-                    //MessageBox.Show(ip + ":" + port + ":"+user+":"+pwd);
-                }
+            //if (rdbtn_online.Checked)
+            //{
+            //    ArrayList rows = new ArrayList();
+            //    string ip = "", port = "", user = "", pwd = "";
+            //    Int32[] selectedRowHandles = gridView3.GetSelectedRows();
+            //    for (int i = 0; i < selectedRowHandles.Length; i++)
+            //    {
+            //        int selectedRowHandle = selectedRowHandles[i];
+            //        rows.Add(gridView3.GetDataRow(selectedRowHandle));
+            //        DataRow row = rows[i] as DataRow;
+            //        ip = row[2].ToString();
+            //        user = row[3].ToString();
+            //        pwd = row[4].ToString();
+            //        port = row[5].ToString();
+            //        //MessageBox.Show(ip + ":" + port + ":"+user+":"+pwd);
+            //    }
 
-                try
-                {
-                    startThread(ip, user, pwd, port);
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.ToString());
-                }
-            }
+            //    try
+            //    {
+            //        startThread(ip, user, pwd, port);
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        Console.WriteLine(ex.ToString());
+            //    }
+            //}
         }
 
         private void startThread(string ip, string user, string pwd, string port)
         {
             stopThread();
-            btnStart.Enabled = false;
-            btnStop.Enabled = true;
+            rdbtn_start.Enabled = false;
+            rdbtn_stop.Enabled = true;
             timerThread = new Thread(() => StartClient(ip, user, pwd, port));
             timerThread.IsBackground = true;
             timerThread.Start();
@@ -509,9 +546,9 @@ namespace GBM_Dashboard
 
         private void stopThread()
         {
-            btnStart.Enabled = true;
+            rdbtn_start.Enabled = true;
             //pictureBox1.Image.Dispose();
-            btnStop.Enabled = false;
+            rdbtn_stop.Enabled = false;
             if (timerThread != null)
             {
                 timerThread.Interrupt();
@@ -691,5 +728,27 @@ namespace GBM_Dashboard
         {
             pictureBox1.Image.Dispose();
         }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnStart_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnStop_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+
     }
 }
