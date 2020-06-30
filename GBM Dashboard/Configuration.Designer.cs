@@ -46,6 +46,7 @@ namespace GBM_Dashboard
             this.colImage_path1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemButtonEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.colactive_fld1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Content = new System.Windows.Forms.Panel();
             this.controlNavigator1 = new DevExpress.XtraEditors.ControlNavigator();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.fKgbmivaconfigtypeidBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -94,7 +95,6 @@ namespace GBM_Dashboard
             this.configuration_type_tblTableAdapter = new GBM_Dashboard.dashboardDataSetTableAdapters.configuration_type_tblTableAdapter();
             this.configuration_tblTableAdapter = new GBM_Dashboard.dashboardDataSetTableAdapters.configuration_tblTableAdapter();
             this.camera_configuration_tblTableAdapter = new GBM_Dashboard.dashboardDataSetTableAdapters.camera_configuration_tblTableAdapter();
-            this.Content = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             this.splitContainerControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2)).BeginInit();
@@ -270,6 +270,14 @@ namespace GBM_Dashboard
             this.colactive_fld1.Name = "colactive_fld1";
             this.colactive_fld1.Visible = true;
             this.colactive_fld1.VisibleIndex = 2;
+            // 
+            // Content
+            // 
+            this.Content.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Content.Location = new System.Drawing.Point(0, 0);
+            this.Content.Name = "Content";
+            this.Content.Size = new System.Drawing.Size(1125, 181);
+            this.Content.TabIndex = 1;
             // 
             // controlNavigator1
             // 
@@ -731,23 +739,15 @@ namespace GBM_Dashboard
             // 
             this.camera_configuration_tblTableAdapter.ClearBeforeFill = true;
             // 
-            // Content
-            // 
-            this.Content.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Content.Location = new System.Drawing.Point(0, 0);
-            this.Content.Name = "Content";
-            this.Content.Size = new System.Drawing.Size(1125, 181);
-            this.Content.TabIndex = 1;
-            // 
             // Configuration
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(1137, 790);
             this.Controls.Add(this.splitContainerControl1);
             this.Name = "Configuration";
-            this.Text = "Configuration";
+            this.Size = new System.Drawing.Size(1137, 790);
             this.Load += new System.EventHandler(this.Configuration_Load);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
             this.splitContainerControl1.ResumeLayout(false);

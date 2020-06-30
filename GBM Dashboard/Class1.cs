@@ -8,6 +8,56 @@ using System.Xml;
 
 namespace GBM_Dashboard
 {
+    public class showDemo
+    {
+        public bool isDemo()
+        {
+            try
+            {
+                string wd = Environment.CurrentDirectory;
+                string pd = System.IO.Directory.GetParent(wd).Parent.FullName;
+                XmlDocument xmlDoc = new XmlDocument();
+                xmlDoc.Load(wd + "\\demo_config\\demo_config.xml");
+                XmlNodeList nodeList = xmlDoc.DocumentElement.SelectNodes("/showDemo");
+                foreach (XmlNode node in nodeList)
+                {
+                    return Convert.ToBoolean(node.SelectSingleNode("isDemoOn").InnerText);
+                }
+                return false;
+            }
+            catch(Exception e)
+            {
+                MessageBox.Show(e.ToString());
+                return false;
+            }
+        }
+
+        public string get_video_path(string use_case_id)
+        {
+            string video_path = "";
+            try
+            {
+                string wd = Environment.CurrentDirectory;
+                string pd = System.IO.Directory.GetParent(wd).Parent.FullName;
+                XmlDocument xmlDoc = new XmlDocument();
+                xmlDoc.Load(wd + "\\demo_config\\demo_config.xml");
+                XmlNodeList nodeList = xmlDoc.DocumentElement.SelectNodes("/showDemo/usecase");
+                foreach (XmlNode node in nodeList)
+                {
+                    if (use_case_id == node.SelectSingleNode("id").InnerText.ToString())
+                    {
+                        video_path = node.SelectSingleNode("video_path").InnerText.ToString();
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.ToString());
+            }
+            return video_path;
+        }
+    }
+
     public class DbConnection
     {
 

@@ -15,6 +15,8 @@ using System.Net;
 using System.Net.Sockets;
 using DevExpress.XtraGrid.Views.Grid;
 using System.IO;
+using MySql.Data.MySqlClient;
+
 
 namespace GBM_Dashboard
 {
@@ -22,17 +24,25 @@ namespace GBM_Dashboard
     {
         Socket socket = null;
         private Thread timerThread;
+        showDemo sd = new showDemo();
+        bool demo = false;
 
         public Form2()
         {
             InitializeComponent();
+            demo = sd.isDemo();
         }
+
+
         List<int> applist = new List<int>();
         List<int> sitelist = new List<int>();
         List<int> camlist = new List<int>();
         List<int> vidlist = new List<int>();
         List<int> violist = new List<int>();
+        List<int[]> control_dim = new List<int[]>();
         int int_gbm_iva_id = GBM_IVA.id;
+        string video_path = "";
+
         private void Form2_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'dashboardDataSet.configuration_type_tbl' table. You can move, or remove it, as needed.
@@ -53,6 +63,95 @@ namespace GBM_Dashboard
             gridView2.SelectAll();
             gridView3.SelectAll();
             gridView4.SelectAll();
+            //get_init_load_ratios();
+            load_ratios();
+        }
+
+        public IEnumerable<Control> GetAll(Control control)
+        {
+            var controls = control.Controls.Cast<Control>();
+
+            return controls.SelectMany(ctrl => GetAll(ctrl))
+                                      .Concat(controls);
+                                     // .Where(c => c.GetType() == type);
+        }
+        private void init_load_ratios()
+        {
+            int index_i = 0;
+            var c = GetAll(this);
+            int[] dims = new int[5];
+            foreach (Control _control in c)
+            {
+                //index_i = this.Controls.IndexOf(_control);
+               /* index_i = -1;
+                for (int i = 0; i < control_dim.Count; i++)
+                {
+                    if ((int)control_dim[i][0] == (int)_control.Tag)
+                    {
+                        index_i = i;
+                        break;
+                    }
+                }*/
+                _control.Left = control_dim[index_i][1];
+                _control.Top = control_dim[index_i][2];
+                _control.Height = control_dim[index_i][3];
+                _control.Width = control_dim[index_i][4];
+                
+                index_i++;
+                if (c.Count() >= index_i) break;
+            }
+        }
+        private void get_init_load_ratios()
+        {
+            var c = GetAll(this);
+            
+            int i = 0;
+            foreach (Control _control in c)
+            {
+                int[] dims = new int[5];
+                _control.Tag = i;
+                dims[0] = i;
+                dims[1] = _control.Left;
+                dims[2] = _control.Top;
+                dims[3] = _control.Width;
+                dims[4] = _control.Height;
+
+                control_dim.Add(dims);
+                i++;
+            }
+        }
+        private void load_ratios()
+        {
+            //init_load_ratios();
+            const double screenHeight = 1080.0;
+            const double screenWidth = 1920.0;
+            //Main_Form new_form = new Main_Form();
+            //double height = new_form.Height;
+            //double width = new_form.Width;
+            double height = Screen.AllScreens[0].Bounds.Height;
+            double width = Screen.AllScreens[0].Bounds.Width;
+            double height_ratio = height / screenHeight;
+            double width_ratio = width / screenWidth;
+            //MessageBox.Show(height_ratio.ToString() + "   " + height.ToString());
+            //MessageBox.Show(width_ratio.ToString() + "   " + width.ToString());
+            //            MessageBox.Show( panel1.Left.ToString());
+            // (int(110 * width_ratio) + int(6 * width_ratio), 1), (int(300 * width_ratio), int(251 * height_ratio))
+            var c = GetAll(this);
+            //MessageBox.Show("Total Controls: " + c.Count());
+            foreach (Control _control in c)
+            {
+                //if (_control.Visible == true )
+                //{
+                //    _control.Left = (int)(_control.Left * width_ratio);
+                //    _control.Top = (int)(_control.Top * height_ratio);
+                //    _control.Width = (int)(_control.Width * width_ratio);
+                //    _control.Height = (int)(_control.Height * height_ratio);
+                //}
+                _control.Left = (int)(_control.Left * width_ratio);
+                _control.Top = (int)(_control.Top * height_ratio);
+                _control.Width = (int)(_control.Width * width_ratio);
+                _control.Height = (int)(_control.Height * height_ratio);
+            }
         }
 
         private void gridView1_SelectionChanged(object sender, DevExpress.Data.SelectionChangedEventArgs e)
@@ -281,9 +380,7 @@ namespace GBM_Dashboard
             }
             view.ActiveFilter.Add(view.Columns["config_type_id"],
               new ColumnFilterInfo("[fk_gbm_iva_id] = " + int_gbm_iva_id.ToString(), ""));
-             gridView1.SelectAll();
-            
-
+            gridView1.SelectAll();
         }
 
         private void gridControl2_Load(object sender, EventArgs e)
@@ -446,10 +543,16 @@ namespace GBM_Dashboard
                     }
                     if (rdBtn_img.Checked)
                     {
-                        axWindowsMediaPlayer1.Visible = false;
-                        pictureEdit1.Visible = true;
-                        pictureEdit1.Image = Image.FromFile(row[2].ToString());
-
+                        try
+                        {
+                            axWindowsMediaPlayer1.Visible = false;
+                            pictureEdit1.Visible = true;
+                            pictureEdit1.Image = Image.FromFile(row[2].ToString());
+                        }
+                        catch (System.ArgumentException ex)
+                        {
+                            MessageBox.Show("No data available.");
+                        }
                     }
                 }
             }
@@ -464,7 +567,7 @@ namespace GBM_Dashboard
             groupBox2.Visible = false;
             online_panel.Visible = true;
             gridView3.OptionsSelection.MultiSelect = true;
-
+            //load_ratios();
         }
 
         private void rdbtn_offline_CheckedChanged(object sender, EventArgs e)
@@ -479,29 +582,210 @@ namespace GBM_Dashboard
 
         private void gridView9_RowClick(object sender, RowClickEventArgs e)
         {
-            ArrayList rows = new ArrayList();
-            string ip = "", port = "", user = "", pwd = "";
-            Int32[] selectedRowHandles = gridView3.GetSelectedRows();
-            for (int i = 0; i < selectedRowHandles.Length; i++)
+            if (demo)
             {
-                int selectedRowHandle = selectedRowHandles[i];
-                rows.Add(gridView3.GetDataRow(selectedRowHandle));
-                DataRow row = rows[i] as DataRow;
-                ip = row[2].ToString();
-                user = row[3].ToString();
-                pwd = row[4].ToString();
-                port = row[5].ToString();
-                //MessageBox.Show(ip + ":" + port + ":"+user+":"+pwd);
+                //MessageBox.Show(gridControl3.DataMember.ToString());
+                ArrayList rows = new ArrayList();
+                string camera_id = "";
+                string use_case_id = "";
+                Int32[] selectedRowHandles = gridView9.GetSelectedRows();
+                for (int i = 0; i < selectedRowHandles.Length; i++)
+                {
+                    int selectedRowHandle = selectedRowHandles[i];
+                    rows.Add(gridView3.GetDataRow(selectedRowHandle));
+                    DataRow row = rows[i] as DataRow;
+                    camera_id = row["ID"].ToString();
+
+                    DbConnection dbCon = new DbConnection();
+                    string connetionString = dbCon.getConnection();
+                    MySqlConnection cnn = new MySqlConnection(connetionString);
+                    MySqlDataReader row1;
+                    MySqlCommand cmd = new MySqlCommand();
+                    cnn.Open();
+
+                    string query_to_get_counts = "SELECT usecase_id FROM dashboard.all_tbls_id_view WHERE camera_config_id = "+ camera_id +";";
+                    cmd = new MySqlCommand(query_to_get_counts, cnn);
+                    row1 = cmd.ExecuteReader();
+                    while (row1.Read())
+                    {
+                        use_case_id = row1["usecase_id"].ToString();
+                    }
+                    video_path = sd.get_video_path(use_case_id);
+                    break;
+                    //MessageBox.Show(use_case_id);
+                    
+                }
+                startThread_video_path(video_path);
             }
+            else
+            {
+                ArrayList rows = new ArrayList();
+                string ip = "", port = "", user = "", pwd = "";
+                Int32[] selectedRowHandles = gridView3.GetSelectedRows();
+                for (int i = 0; i < selectedRowHandles.Length; i++)
+                {
+                    int selectedRowHandle = selectedRowHandles[i];
+                    rows.Add(gridView3.GetDataRow(selectedRowHandle));
+                    DataRow row = rows[i] as DataRow;
+                    ip = row[2].ToString();
+                    user = row[3].ToString();
+                    pwd = row[4].ToString();
+                    port = row[5].ToString();
+                    //MessageBox.Show(ip + ":" + port + ":"+user+":"+pwd);
+                    //load_ratios();
+                }
+
+                try
+                {
+                    startThread(ip, user, pwd, port);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.ToString());
+                }
+            }
+        }
+
+        private void startClient_video_path(string video_path)
+        {
+            byte[] bytes = new byte[9048];
 
             try
             {
-                startThread(ip, user, pwd, port);
+                // Establish the remote endpoint for the socket.  
+                // This example uses port 11000 on the local computer.  
+                IPHostEntry ipHostInfo = Dns.GetHostEntry(Dns.GetHostName());
+                IPAddress ipAddress = ipHostInfo.AddressList[1];
+                IPEndPoint remoteEP = new IPEndPoint(ipAddress, 5005);
+
+                // Create a TCP/IP  socket.  
+                socket = new Socket(ipAddress.AddressFamily,
+                    SocketType.Stream, ProtocolType.Tcp);
+
+                // Connect the socket to the remote endpoint. Catch any errors.  
+                try
+                {
+                    socket.Connect(remoteEP);
+
+                    string cam_url = "0";
+                    cam_url = video_path;
+                    //cam_url = "rtspsrc location=rtsp://admin:India12345@195.229.90.117:4444 latency=2000 ! rtph264depay ! h264parse ! decodebin ! videoconvert ! appsink";
+                    Console.WriteLine("Socket connected to {0}",
+                        socket.RemoteEndPoint.ToString());
+
+                    // Encode the data string into a byte array.  
+                    byte[] msg = Encoding.ASCII.GetBytes(cam_url);
+
+                    // Send the data through the socket.  
+                    int bytesSent = socket.Send(msg);
+                    string dataStr = "";
+                    // Receive the response from the remote device.  
+                    while (true)
+                    {
+                        int bytesRec = socket.Receive(bytes);
+                        Console.WriteLine("Echoed test = {0}",bytesRec);
+                        dataStr += Encoding.ASCII.GetString(bytes, 0, bytesRec);
+                        //Console.WriteLine(dataStr);
+                        /*if (bytes[bytesRec - 4] == 'E' & bytes[bytesRec - 3] == 'N' & bytes[bytesRec - 2] == 'D' & bytes[bytesRec - 1] == '!')
+                        {
+                            Console.WriteLine("Echoed test = {0}", Encoding.ASCII.GetString(bytes, 0, bytesRec));
+                            Console.WriteLine("end found " + bytesRec);
+                            break;
+                        }*/
+                        if (dataStr.Contains("END!"))
+                        {
+                            int index2 = dataStr.IndexOf("END!");
+                            //Console.WriteLine("End found at::::" + index2);
+                            int totLen = dataStr.Length;
+                            //Console.WriteLine("length::::" + dataStr.Length);
+                            //string mainData = dataStr.Substring(0, index2);
+                            //if (index2 == mainData.Length)
+                            //{
+                            //    dataStr = dataStr.Substring(0, index2);
+                            //}
+                            //else
+                            //{
+                            string mainData = dataStr.Substring(0, index2);
+                            //Console.WriteLine("main data length::::" + mainData.Length);
+                            Image image = byteArrayToImage(mainData);
+                            //pictureBox1.Image = image;
+                            //if (pictureBox1.Image != null) { pictureBox1.Image.Dispose(); }
+                            //pictureBox1.Image = (Image)image.Clone();
+                            //pictureBox1.Update();
+                            SetPicture(image);
+                            //image.Dispose();
+                            if (dataStr.Length == index2 + 4)
+                            {
+                                dataStr = "";
+                            }
+                            else if (dataStr.Length > (index2 + 4))
+                            {
+                                //Console.WriteLine("TEST TEST");
+                                //Console.WriteLine("TEST TEST" + (index2 + 4));
+                                string dataStr1 = dataStr.Substring(index2 + 4, (totLen - (index2 + 4)));
+                                dataStr = dataStr1;
+                            }
+                            else
+                            {
+
+                            }
+                            //}
+                            //Console.WriteLine("remaining string::" + dataStr);
+                        }
+
+                    }
+
+                    // Release the socket.  
+                    socket.Shutdown(SocketShutdown.Both);
+                    socket.Close();
+
+                }
+                catch (ArgumentNullException ane)
+                {
+                    Console.WriteLine("ArgumentNullException : {0}", ane.ToString());
+
+                }
+                catch (SocketException se)
+                {
+                    Console.WriteLine("SocketException : {0}", se.ToString());
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("Unexpected exception : {0}", e.ToString());
+                }
+
             }
-            catch (Exception ex)
+            catch (Exception e)
             {
-                Console.WriteLine(ex.ToString());
+                Console.WriteLine(e.ToString());
             }
+        }
+
+        private void SetPicture(Image img)
+        {
+            if (pictureBox1.InvokeRequired)
+            {
+                pictureBox1.Invoke(new MethodInvoker(
+                delegate ()
+                {
+                    pictureBox1.Image = img;
+                }));
+            }
+            else
+            {
+                pictureBox1.Image = img;
+            }
+        }
+
+        private void startThread_video_path(string video_path)
+        {
+            Console.WriteLine("start video callled :::::::::1111111");
+            stopThread();
+            //rdbtn_start.Enabled = false;
+            rdbtn_stop.Enabled = true;
+            timerThread = new Thread(() => startClient_video_path(video_path));
+            timerThread.IsBackground = true;
+            timerThread.Start();
         }
 
         private void gridView3_RowClick(object sender, RowClickEventArgs e)
@@ -619,10 +903,11 @@ namespace GBM_Dashboard
                             string mainData = dataStr.Substring(0, index2);
                             //Console.WriteLine("main data length::::" + mainData.Length);
                             Image image = byteArrayToImage(mainData);
+                            SetPicture(image);
                             //pictureBox1.Image = image;
-                            if (pictureBox1.Image != null) { pictureBox1.Image.Dispose(); }
-                            pictureBox1.Image = (Image)image.Clone();
-                            pictureBox1.Update();
+                            //if (pictureBox1.Image != null) { pictureBox1.Image.Dispose(); }
+                            //pictureBox1.Image = (Image)image.Clone();
+                            //pictureBox1.Update();
                             //image.Dispose();
                             if (dataStr.Length == index2 + 4)
                             {
@@ -714,19 +999,9 @@ namespace GBM_Dashboard
 
         }
 
-        private void groupBox3_Enter(object sender, EventArgs e)
-        {
-
-        }
-
         private void pictureEdit1_EditValueChanged(object sender, EventArgs e)
         {
            
-        }
-
-        private void btnStop_Click(object sender, EventArgs e)
-        {
-            pictureBox1.Image.Dispose();
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -734,21 +1009,57 @@ namespace GBM_Dashboard
 
         }
 
-        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        private void rdbtn_online_Click(object sender, EventArgs e)
         {
+            //showDemo sd = new showDemo();
+            //bool demo = sd.isDemo();
+            //if (demo)
+            //{
+            //    MessageBox.Show(gridView3.DataSource.ToString());
 
+            //}
+            //gridControl4.Visible = false;
+            //gridControl5.Visible = false;
+            //pictureEdit1.Visible = false;
+            //axWindowsMediaPlayer1.Visible = false;
+            //groupBox2.Visible = false;
+            //online_panel.Visible = true;
+            //gridView3.OptionsSelection.MultiSelect = true;
+        }
+        void rdbtn_Stop_CheckedChanged(object sender, EventArgs e)
+        {
+            RadioButton rb = sender as RadioButton;
+            if (rb != null)
+            {
+                if (rb.Checked)
+                {
+                    // Only one radio button will be checked
+                    Console.WriteLine("Changed: " + rb.Name);
+                    stopThread();
+                }
+            }
         }
 
-        private void btnStart_Click(object sender, EventArgs e)
+        private void rdbtn_start_CheckedChanged(object sender, EventArgs e)
         {
-
+            RadioButton rb = sender as RadioButton;
+            if (demo)
+            {
+                if (rb != null)
+                {
+                    if (rb.Checked)
+                    {
+                        // Only one radio button will be checked
+                        Console.WriteLine("Changed: " + rb.Name);
+                        startThread_video_path(video_path);
+                    }
+                }
+            }
+            else
+            {
+                //call startThreasd with ip user pwd port.
+            }
+            
         }
-
-        private void btnStop_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-
     }
 }

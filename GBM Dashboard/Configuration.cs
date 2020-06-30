@@ -71,7 +71,54 @@ namespace GBM_Dashboard
             //this.repositoryItemButtonEdit1.Click += new EventHandler(this.repositoryItemButtonEdit1_Click);
 
             this.gbm_ivaTableAdapter.Fill(this.dashboardDataSet.gbm_iva);
+
+            load_ratios();
+
         }
+
+        public IEnumerable<Control> GetAll(Control control)
+        {
+            var controls = control.Controls.Cast<Control>();
+
+            return controls.SelectMany(ctrl => GetAll(ctrl))
+                                      .Concat(controls);
+            // .Where(c => c.GetType() == type);
+        }
+
+        private void load_ratios()
+        {
+            const double screenHeight = 1080.0;
+            const double screenWidth = 1920.0;
+            //Main_Form new_form = new Main_Form();
+            //double height = new_form.Height;
+            //double width = new_form.Width;
+            double height = Screen.AllScreens[0].Bounds.Height;
+            double width = Screen.AllScreens[0].Bounds.Width;
+            double height_ratio = height / screenHeight;
+            double width_ratio = width / screenWidth;
+            //MessageBox.Show(height_ratio.ToString() + "   " + height.ToString());
+            //MessageBox.Show(width_ratio.ToString() + "   " + width.ToString());
+            //            MessageBox.Show( panel1.Left.ToString());
+            // (int(110 * width_ratio) + int(6 * width_ratio), 1), (int(300 * width_ratio), int(251 * height_ratio))
+            var c = GetAll(this);
+            //MessageBox.Show("Total Controls: " + c.Count());
+            foreach (Control _control in c)
+            {
+                //if (_control.Visible == true )
+                //{
+                //    _control.Left = (int)(_control.Left * width_ratio);
+                //    _control.Top = (int)(_control.Top * height_ratio);
+                //    _control.Width = (int)(_control.Width * width_ratio);
+                //    _control.Height = (int)(_control.Height * height_ratio);
+                //}
+                _control.Left = (int)(_control.Left * width_ratio);
+                _control.Top = (int)(_control.Top * height_ratio);
+                _control.Width = (int)(_control.Width * width_ratio);
+                _control.Height = (int)(_control.Height * height_ratio);
+            }
+        }
+
+
 
         private void controlNavigator1_ButtonClick(object sender, DevExpress.XtraEditors.NavigatorButtonClickEventArgs e)
         {

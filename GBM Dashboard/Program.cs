@@ -18,7 +18,7 @@ namespace GBM_Dashboard
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Main_Form());
 
-            //Application.Run(new Form2());
+            //Application.Run(new Form3());
         }
     }
 }

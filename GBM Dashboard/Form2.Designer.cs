@@ -63,21 +63,6 @@
             this.rdBtn_vid = new System.Windows.Forms.RadioButton();
             this.rdBtn_img = new System.Windows.Forms.RadioButton();
             this.Content = new System.Windows.Forms.Panel();
-            this.online_panel = new System.Windows.Forms.Panel();
-            this.gridControl7 = new DevExpress.XtraGrid.GridControl();
-            this.gridView9 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.colID = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colfolder_fid = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colcamera_ip_fid1 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colcamera_user_id = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colcamera_password_fid = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colcamera_port_no_fid = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colcamera_active_fid = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colconfig_id_fld = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.rdbtn_stop = new System.Windows.Forms.RadioButton();
-            this.rdbtn_start = new System.Windows.Forms.RadioButton();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.rdbtn_online = new System.Windows.Forms.RadioButton();
@@ -98,6 +83,21 @@
             this.colvideo_name_fld = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colvideo_datetime_fld = new DevExpress.XtraGrid.Columns.GridColumn();
             this.axWindowsMediaPlayer1 = new AxWMPLib.AxWindowsMediaPlayer();
+            this.online_panel = new System.Windows.Forms.Panel();
+            this.gridControl7 = new DevExpress.XtraGrid.GridControl();
+            this.gridView9 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.colID = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colfolder_fid = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colcamera_ip_fid1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colcamera_user_id = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colcamera_password_fid = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colcamera_port_no_fid = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colcamera_active_fid = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colconfig_id_fld = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.rdbtn_stop = new System.Windows.Forms.RadioButton();
+            this.rdbtn_start = new System.Windows.Forms.RadioButton();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.fkconfigtblconfigtypetblBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.fkcameraconfigtblconfigtblBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).BeginInit();
@@ -113,11 +113,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.Content.SuspendLayout();
-            this.online_panel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView9)).BeginInit();
-            this.groupBox4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
@@ -131,6 +126,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridControl4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer1)).BeginInit();
+            this.online_panel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView9)).BeginInit();
+            this.groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fkconfigtblconfigtypetblBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fkcameraconfigtblconfigtblBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -198,7 +198,7 @@
             this.gridControl5.Location = new System.Drawing.Point(105, 362);
             this.gridControl5.MainView = this.gridView5;
             this.gridControl5.Name = "gridControl5";
-            this.gridControl5.Size = new System.Drawing.Size(401, 403);
+            this.gridControl5.Size = new System.Drawing.Size(401, 383);
             this.gridControl5.TabIndex = 4;
             this.gridControl5.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView5});
@@ -258,9 +258,6 @@
             // 
             // pictureEdit1
             // 
-            this.pictureEdit1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureEdit1.DataBindings.Add(new System.Windows.Forms.Binding("Image", this.violationtblBindingSource, "violation_frame_path_fld", true));
             this.pictureEdit1.Location = new System.Drawing.Point(560, 363);
             this.pictureEdit1.Name = "pictureEdit1";
@@ -312,16 +309,260 @@
             // 
             // Content
             // 
-            this.Content.Controls.Add(this.online_panel);
             this.Content.Controls.Add(this.pictureEdit1);
             this.Content.Controls.Add(this.panel1);
             this.Content.Controls.Add(this.gridControl5);
             this.Content.Controls.Add(this.groupBox2);
             this.Content.Controls.Add(this.axWindowsMediaPlayer1);
+            this.Content.Controls.Add(this.online_panel);
             this.Content.Location = new System.Drawing.Point(0, 0);
             this.Content.Name = "Content";
             this.Content.Size = new System.Drawing.Size(1391, 780);
             this.Content.TabIndex = 17;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.groupBox1);
+            this.panel1.Controls.Add(this.gridControl1);
+            this.panel1.Controls.Add(this.gridControl2);
+            this.panel1.Controls.Add(this.gridControl3);
+            this.panel1.Controls.Add(this.gridControl4);
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1391, 254);
+            this.panel1.TabIndex = 18;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.rdbtn_online);
+            this.groupBox1.Controls.Add(this.rdbtn_offline);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.groupBox1.Location = new System.Drawing.Point(0, 0);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(110, 254);
+            this.groupBox1.TabIndex = 13;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Select";
+            // 
+            // rdbtn_online
+            // 
+            this.rdbtn_online.AutoSize = true;
+            this.rdbtn_online.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdbtn_online.Location = new System.Drawing.Point(23, 47);
+            this.rdbtn_online.Name = "rdbtn_online";
+            this.rdbtn_online.Size = new System.Drawing.Size(64, 21);
+            this.rdbtn_online.TabIndex = 1;
+            this.rdbtn_online.Text = "Online";
+            this.rdbtn_online.UseVisualStyleBackColor = true;
+            this.rdbtn_online.CheckedChanged += new System.EventHandler(this.rdbtn_online_CheckedChanged);
+            this.rdbtn_online.Click += new System.EventHandler(this.rdbtn_online_Click);
+            // 
+            // rdbtn_offline
+            // 
+            this.rdbtn_offline.AutoSize = true;
+            this.rdbtn_offline.Checked = true;
+            this.rdbtn_offline.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdbtn_offline.Location = new System.Drawing.Point(23, 20);
+            this.rdbtn_offline.Name = "rdbtn_offline";
+            this.rdbtn_offline.Size = new System.Drawing.Size(67, 21);
+            this.rdbtn_offline.TabIndex = 0;
+            this.rdbtn_offline.TabStop = true;
+            this.rdbtn_offline.Text = "Offline";
+            this.rdbtn_offline.UseVisualStyleBackColor = true;
+            this.rdbtn_offline.CheckedChanged += new System.EventHandler(this.rdbtn_offline_CheckedChanged);
+            // 
+            // gridControl1
+            // 
+            this.gridControl1.DataSource = this.configurationtypetblBindingSource;
+            this.gridControl1.Location = new System.Drawing.Point(116, 1);
+            this.gridControl1.MainView = this.gridView1;
+            this.gridControl1.Name = "gridControl1";
+            this.gridControl1.Size = new System.Drawing.Size(308, 251);
+            this.gridControl1.TabIndex = 0;
+            this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView1,
+            this.gridView7});
+            this.gridControl1.Load += new System.EventHandler(this.gridControl1_Load);
+            // 
+            // gridView1
+            // 
+            this.gridView1.Appearance.FocusedRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(145)))), ((int)(((byte)(75)))), ((int)(((byte)(171)))));
+            this.gridView1.Appearance.FocusedRow.Options.UseBackColor = true;
+            this.gridView1.Appearance.HeaderPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.gridView1.Appearance.HeaderPanel.Options.UseBackColor = true;
+            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.colconfiguration_description_fld});
+            this.gridView1.GridControl = this.gridControl1;
+            this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsBehavior.AutoSelectAllInEditor = false;
+            this.gridView1.OptionsBehavior.Editable = false;
+            this.gridView1.OptionsFilter.ShowAllTableValuesInFilterPopup = true;
+            this.gridView1.OptionsFilter.UseNewCustomFilterDialog = true;
+            this.gridView1.OptionsSelection.MultiSelect = true;
+            this.gridView1.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.CheckBoxRowSelect;
+            this.gridView1.OptionsView.ShowAutoFilterRow = true;
+            this.gridView1.OptionsView.ShowDetailButtons = false;
+            this.gridView1.OptionsView.ShowGroupPanel = false;
+            this.gridView1.SelectionChanged += new DevExpress.Data.SelectionChangedEventHandler(this.gridView1_SelectionChanged);
+            // 
+            // colconfiguration_description_fld
+            // 
+            this.colconfiguration_description_fld.Caption = "Application List";
+            this.colconfiguration_description_fld.FieldName = "configuration_description_fld";
+            this.colconfiguration_description_fld.Name = "colconfiguration_description_fld";
+            this.colconfiguration_description_fld.Visible = true;
+            this.colconfiguration_description_fld.VisibleIndex = 1;
+            this.colconfiguration_description_fld.Width = 205;
+            // 
+            // gridView7
+            // 
+            this.gridView7.GridControl = this.gridControl1;
+            this.gridView7.Name = "gridView7";
+            // 
+            // gridControl2
+            // 
+            this.gridControl2.DataSource = this.configurationtblBindingSource;
+            this.gridControl2.Location = new System.Drawing.Point(427, 1);
+            this.gridControl2.MainView = this.gridView2;
+            this.gridControl2.Name = "gridControl2";
+            this.gridControl2.Size = new System.Drawing.Size(320, 251);
+            this.gridControl2.TabIndex = 1;
+            this.gridControl2.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView2,
+            this.gridView6});
+            this.gridControl2.Load += new System.EventHandler(this.gridControl2_Load);
+            this.gridControl2.Click += new System.EventHandler(this.gridControl2_Click);
+            // 
+            // gridView2
+            // 
+            this.gridView2.Appearance.FocusedRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(145)))), ((int)(((byte)(75)))), ((int)(((byte)(171)))));
+            this.gridView2.Appearance.FocusedRow.Options.UseBackColor = true;
+            this.gridView2.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.colconfiguaration_description_fld});
+            this.gridView2.GridControl = this.gridControl2;
+            this.gridView2.Name = "gridView2";
+            this.gridView2.OptionsBehavior.AutoSelectAllInEditor = false;
+            this.gridView2.OptionsBehavior.Editable = false;
+            this.gridView2.OptionsFilter.ShowAllTableValuesInFilterPopup = true;
+            this.gridView2.OptionsFilter.UseNewCustomFilterDialog = true;
+            this.gridView2.OptionsSelection.MultiSelect = true;
+            this.gridView2.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.CheckBoxRowSelect;
+            this.gridView2.OptionsView.ShowAutoFilterRow = true;
+            this.gridView2.OptionsView.ShowDetailButtons = false;
+            this.gridView2.OptionsView.ShowGroupPanel = false;
+            this.gridView2.SelectionChanged += new DevExpress.Data.SelectionChangedEventHandler(this.gridView2_SelectionChanged);
+            // 
+            // colconfiguaration_description_fld
+            // 
+            this.colconfiguaration_description_fld.Caption = "Site List";
+            this.colconfiguaration_description_fld.FieldName = "configuaration_description_fld";
+            this.colconfiguaration_description_fld.Name = "colconfiguaration_description_fld";
+            this.colconfiguaration_description_fld.Visible = true;
+            this.colconfiguaration_description_fld.VisibleIndex = 1;
+            // 
+            // gridView6
+            // 
+            this.gridView6.GridControl = this.gridControl2;
+            this.gridView6.Name = "gridView6";
+            // 
+            // gridControl3
+            // 
+            this.gridControl3.DataSource = this.cameraconfigurationtblBindingSource;
+            this.gridControl3.Location = new System.Drawing.Point(750, 1);
+            this.gridControl3.MainView = this.gridView3;
+            this.gridControl3.Name = "gridControl3";
+            this.gridControl3.Size = new System.Drawing.Size(320, 251);
+            this.gridControl3.TabIndex = 2;
+            this.gridControl3.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView3});
+            this.gridControl3.Load += new System.EventHandler(this.gridControl3_Load);
+            this.gridControl3.Click += new System.EventHandler(this.gridControl3_Click);
+            // 
+            // gridView3
+            // 
+            this.gridView3.Appearance.FocusedRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(145)))), ((int)(((byte)(75)))), ((int)(((byte)(171)))));
+            this.gridView3.Appearance.FocusedRow.Options.UseBackColor = true;
+            this.gridView3.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.colcamera_ip_fid});
+            this.gridView3.GridControl = this.gridControl3;
+            this.gridView3.Name = "gridView3";
+            this.gridView3.OptionsBehavior.AutoSelectAllInEditor = false;
+            this.gridView3.OptionsBehavior.Editable = false;
+            this.gridView3.OptionsFilter.ShowAllTableValuesInFilterPopup = true;
+            this.gridView3.OptionsFilter.UseNewCustomFilterDialog = true;
+            this.gridView3.OptionsSelection.MultiSelect = true;
+            this.gridView3.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.CheckBoxRowSelect;
+            this.gridView3.OptionsView.ShowAutoFilterRow = true;
+            this.gridView3.OptionsView.ShowDetailButtons = false;
+            this.gridView3.OptionsView.ShowGroupPanel = false;
+            this.gridView3.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.gridView3_RowClick);
+            this.gridView3.SelectionChanged += new DevExpress.Data.SelectionChangedEventHandler(this.gridView3_SelectionChanged);
+            // 
+            // colcamera_ip_fid
+            // 
+            this.colcamera_ip_fid.Caption = "Camera List";
+            this.colcamera_ip_fid.FieldName = "camera_ip_fid";
+            this.colcamera_ip_fid.Name = "colcamera_ip_fid";
+            this.colcamera_ip_fid.Visible = true;
+            this.colcamera_ip_fid.VisibleIndex = 1;
+            // 
+            // gridControl4
+            // 
+            this.gridControl4.DataSource = this.videosBindingSource;
+            this.gridControl4.Location = new System.Drawing.Point(1074, 1);
+            this.gridControl4.MainView = this.gridView4;
+            this.gridControl4.Name = "gridControl4";
+            this.gridControl4.Size = new System.Drawing.Size(320, 251);
+            this.gridControl4.TabIndex = 3;
+            this.gridControl4.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView4});
+            this.gridControl4.Load += new System.EventHandler(this.gridControl4_Load);
+            // 
+            // gridView4
+            // 
+            this.gridView4.Appearance.ColumnFilterButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(145)))), ((int)(((byte)(75)))), ((int)(((byte)(171)))));
+            this.gridView4.Appearance.ColumnFilterButton.Options.UseBackColor = true;
+            this.gridView4.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.colvideo_name_fld,
+            this.colvideo_datetime_fld});
+            this.gridView4.GridControl = this.gridControl4;
+            this.gridView4.Name = "gridView4";
+            this.gridView4.OptionsBehavior.AutoSelectAllInEditor = false;
+            this.gridView4.OptionsBehavior.Editable = false;
+            this.gridView4.OptionsFilter.ShowAllTableValuesInFilterPopup = true;
+            this.gridView4.OptionsFilter.UseNewCustomFilterDialog = true;
+            this.gridView4.OptionsSelection.MultiSelect = true;
+            this.gridView4.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.CheckBoxRowSelect;
+            this.gridView4.OptionsView.ShowAutoFilterRow = true;
+            this.gridView4.OptionsView.ShowDetailButtons = false;
+            this.gridView4.OptionsView.ShowGroupPanel = false;
+            this.gridView4.SelectionChanged += new DevExpress.Data.SelectionChangedEventHandler(this.gridView4_SelectionChanged);
+            // 
+            // colvideo_name_fld
+            // 
+            this.colvideo_name_fld.Caption = "Videos feed list";
+            this.colvideo_name_fld.FieldName = "video_name_fld";
+            this.colvideo_name_fld.Name = "colvideo_name_fld";
+            this.colvideo_name_fld.Visible = true;
+            this.colvideo_name_fld.VisibleIndex = 2;
+            // 
+            // colvideo_datetime_fld
+            // 
+            this.colvideo_datetime_fld.Caption = "Date & Time";
+            this.colvideo_datetime_fld.FieldName = "video_datetime_fld";
+            this.colvideo_datetime_fld.Name = "colvideo_datetime_fld";
+            this.colvideo_datetime_fld.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.DateSmart;
+            this.colvideo_datetime_fld.Visible = true;
+            this.colvideo_datetime_fld.VisibleIndex = 1;
+            // 
+            // axWindowsMediaPlayer1
+            // 
+            this.axWindowsMediaPlayer1.Enabled = true;
+            this.axWindowsMediaPlayer1.Location = new System.Drawing.Point(560, 363);
+            this.axWindowsMediaPlayer1.Name = "axWindowsMediaPlayer1";
+            this.axWindowsMediaPlayer1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axWindowsMediaPlayer1.OcxState")));
+            this.axWindowsMediaPlayer1.Size = new System.Drawing.Size(766, 382);
+            this.axWindowsMediaPlayer1.TabIndex = 16;
             // 
             // online_panel
             // 
@@ -435,6 +676,7 @@
             this.rdbtn_stop.TabIndex = 1;
             this.rdbtn_stop.Text = "Stop";
             this.rdbtn_stop.UseVisualStyleBackColor = true;
+            this.rdbtn_stop.CheckedChanged += new System.EventHandler(this.rdbtn_Stop_CheckedChanged);
             // 
             // rdbtn_start
             // 
@@ -447,7 +689,7 @@
             this.rdbtn_start.TabStop = true;
             this.rdbtn_start.Text = "Start";
             this.rdbtn_start.UseVisualStyleBackColor = true;
-            this.rdbtn_start.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
+            this.rdbtn_start.CheckedChanged += new System.EventHandler(this.rdbtn_start_CheckedChanged);
             // 
             // pictureBox1
             // 
@@ -461,252 +703,6 @@
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.groupBox1);
-            this.panel1.Controls.Add(this.gridControl1);
-            this.panel1.Controls.Add(this.gridControl2);
-            this.panel1.Controls.Add(this.gridControl3);
-            this.panel1.Controls.Add(this.gridControl4);
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1391, 254);
-            this.panel1.TabIndex = 18;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.rdbtn_online);
-            this.groupBox1.Controls.Add(this.rdbtn_offline);
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.groupBox1.Location = new System.Drawing.Point(0, 0);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(110, 254);
-            this.groupBox1.TabIndex = 13;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Select";
-            // 
-            // rdbtn_online
-            // 
-            this.rdbtn_online.AutoSize = true;
-            this.rdbtn_online.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdbtn_online.Location = new System.Drawing.Point(23, 47);
-            this.rdbtn_online.Name = "rdbtn_online";
-            this.rdbtn_online.Size = new System.Drawing.Size(64, 21);
-            this.rdbtn_online.TabIndex = 1;
-            this.rdbtn_online.Text = "Online";
-            this.rdbtn_online.UseVisualStyleBackColor = true;
-            this.rdbtn_online.CheckedChanged += new System.EventHandler(this.rdbtn_online_CheckedChanged);
-            // 
-            // rdbtn_offline
-            // 
-            this.rdbtn_offline.AutoSize = true;
-            this.rdbtn_offline.Checked = true;
-            this.rdbtn_offline.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdbtn_offline.Location = new System.Drawing.Point(23, 20);
-            this.rdbtn_offline.Name = "rdbtn_offline";
-            this.rdbtn_offline.Size = new System.Drawing.Size(67, 21);
-            this.rdbtn_offline.TabIndex = 0;
-            this.rdbtn_offline.TabStop = true;
-            this.rdbtn_offline.Text = "Offline";
-            this.rdbtn_offline.UseVisualStyleBackColor = true;
-            this.rdbtn_offline.CheckedChanged += new System.EventHandler(this.rdbtn_offline_CheckedChanged);
-            // 
-            // gridControl1
-            // 
-            this.gridControl1.DataSource = this.configurationtypetblBindingSource;
-            this.gridControl1.Location = new System.Drawing.Point(116, 1);
-            this.gridControl1.MainView = this.gridView1;
-            this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(300, 251);
-            this.gridControl1.TabIndex = 0;
-            this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView1,
-            this.gridView7});
-            this.gridControl1.Load += new System.EventHandler(this.gridControl1_Load);
-            // 
-            // gridView1
-            // 
-            this.gridView1.Appearance.FocusedRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(145)))), ((int)(((byte)(75)))), ((int)(((byte)(171)))));
-            this.gridView1.Appearance.FocusedRow.Options.UseBackColor = true;
-            this.gridView1.Appearance.HeaderPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.gridView1.Appearance.HeaderPanel.Options.UseBackColor = true;
-            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.colconfiguration_description_fld});
-            this.gridView1.GridControl = this.gridControl1;
-            this.gridView1.Name = "gridView1";
-            this.gridView1.OptionsBehavior.AutoSelectAllInEditor = false;
-            this.gridView1.OptionsBehavior.Editable = false;
-            this.gridView1.OptionsFilter.ShowAllTableValuesInFilterPopup = true;
-            this.gridView1.OptionsFilter.UseNewCustomFilterDialog = true;
-            this.gridView1.OptionsSelection.MultiSelect = true;
-            this.gridView1.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.CheckBoxRowSelect;
-            this.gridView1.OptionsView.ShowAutoFilterRow = true;
-            this.gridView1.OptionsView.ShowDetailButtons = false;
-            this.gridView1.OptionsView.ShowGroupPanel = false;
-            this.gridView1.SelectionChanged += new DevExpress.Data.SelectionChangedEventHandler(this.gridView1_SelectionChanged);
-            // 
-            // colconfiguration_description_fld
-            // 
-            this.colconfiguration_description_fld.Caption = "Application List";
-            this.colconfiguration_description_fld.FieldName = "configuration_description_fld";
-            this.colconfiguration_description_fld.Name = "colconfiguration_description_fld";
-            this.colconfiguration_description_fld.Visible = true;
-            this.colconfiguration_description_fld.VisibleIndex = 1;
-            this.colconfiguration_description_fld.Width = 205;
-            // 
-            // gridView7
-            // 
-            this.gridView7.GridControl = this.gridControl1;
-            this.gridView7.Name = "gridView7";
-            // 
-            // gridControl2
-            // 
-            this.gridControl2.DataSource = this.configurationtblBindingSource;
-            this.gridControl2.Location = new System.Drawing.Point(419, 1);
-            this.gridControl2.MainView = this.gridView2;
-            this.gridControl2.Name = "gridControl2";
-            this.gridControl2.Size = new System.Drawing.Size(300, 251);
-            this.gridControl2.TabIndex = 1;
-            this.gridControl2.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView2,
-            this.gridView6});
-            this.gridControl2.Load += new System.EventHandler(this.gridControl2_Load);
-            this.gridControl2.Click += new System.EventHandler(this.gridControl2_Click);
-            // 
-            // gridView2
-            // 
-            this.gridView2.Appearance.FocusedRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(145)))), ((int)(((byte)(75)))), ((int)(((byte)(171)))));
-            this.gridView2.Appearance.FocusedRow.Options.UseBackColor = true;
-            this.gridView2.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.colconfiguaration_description_fld});
-            this.gridView2.GridControl = this.gridControl2;
-            this.gridView2.Name = "gridView2";
-            this.gridView2.OptionsBehavior.AutoSelectAllInEditor = false;
-            this.gridView2.OptionsBehavior.Editable = false;
-            this.gridView2.OptionsFilter.ShowAllTableValuesInFilterPopup = true;
-            this.gridView2.OptionsFilter.UseNewCustomFilterDialog = true;
-            this.gridView2.OptionsSelection.MultiSelect = true;
-            this.gridView2.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.CheckBoxRowSelect;
-            this.gridView2.OptionsView.ShowAutoFilterRow = true;
-            this.gridView2.OptionsView.ShowDetailButtons = false;
-            this.gridView2.OptionsView.ShowGroupPanel = false;
-            this.gridView2.SelectionChanged += new DevExpress.Data.SelectionChangedEventHandler(this.gridView2_SelectionChanged);
-            // 
-            // colconfiguaration_description_fld
-            // 
-            this.colconfiguaration_description_fld.Caption = "Site List";
-            this.colconfiguaration_description_fld.FieldName = "configuaration_description_fld";
-            this.colconfiguaration_description_fld.Name = "colconfiguaration_description_fld";
-            this.colconfiguaration_description_fld.Visible = true;
-            this.colconfiguaration_description_fld.VisibleIndex = 1;
-            // 
-            // gridView6
-            // 
-            this.gridView6.GridControl = this.gridControl2;
-            this.gridView6.Name = "gridView6";
-            // 
-            // gridControl3
-            // 
-            this.gridControl3.DataSource = this.cameraconfigurationtblBindingSource;
-            this.gridControl3.Location = new System.Drawing.Point(722, 1);
-            this.gridControl3.MainView = this.gridView3;
-            this.gridControl3.Name = "gridControl3";
-            this.gridControl3.Size = new System.Drawing.Size(300, 251);
-            this.gridControl3.TabIndex = 2;
-            this.gridControl3.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView3});
-            this.gridControl3.Load += new System.EventHandler(this.gridControl3_Load);
-            this.gridControl3.Click += new System.EventHandler(this.gridControl3_Click);
-            // 
-            // gridView3
-            // 
-            this.gridView3.Appearance.FocusedRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(145)))), ((int)(((byte)(75)))), ((int)(((byte)(171)))));
-            this.gridView3.Appearance.FocusedRow.Options.UseBackColor = true;
-            this.gridView3.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.colcamera_ip_fid});
-            this.gridView3.GridControl = this.gridControl3;
-            this.gridView3.Name = "gridView3";
-            this.gridView3.OptionsBehavior.AutoSelectAllInEditor = false;
-            this.gridView3.OptionsBehavior.Editable = false;
-            this.gridView3.OptionsFilter.ShowAllTableValuesInFilterPopup = true;
-            this.gridView3.OptionsFilter.UseNewCustomFilterDialog = true;
-            this.gridView3.OptionsSelection.MultiSelect = true;
-            this.gridView3.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.CheckBoxRowSelect;
-            this.gridView3.OptionsView.ShowAutoFilterRow = true;
-            this.gridView3.OptionsView.ShowDetailButtons = false;
-            this.gridView3.OptionsView.ShowGroupPanel = false;
-            this.gridView3.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.gridView3_RowClick);
-            this.gridView3.SelectionChanged += new DevExpress.Data.SelectionChangedEventHandler(this.gridView3_SelectionChanged);
-            // 
-            // colcamera_ip_fid
-            // 
-            this.colcamera_ip_fid.Caption = "Camera List";
-            this.colcamera_ip_fid.FieldName = "camera_ip_fid";
-            this.colcamera_ip_fid.Name = "colcamera_ip_fid";
-            this.colcamera_ip_fid.Visible = true;
-            this.colcamera_ip_fid.VisibleIndex = 1;
-            // 
-            // gridControl4
-            // 
-            this.gridControl4.DataSource = this.videosBindingSource;
-            this.gridControl4.Location = new System.Drawing.Point(1026, 1);
-            this.gridControl4.MainView = this.gridView4;
-            this.gridControl4.Name = "gridControl4";
-            this.gridControl4.Size = new System.Drawing.Size(300, 251);
-            this.gridControl4.TabIndex = 3;
-            this.gridControl4.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView4});
-            this.gridControl4.Load += new System.EventHandler(this.gridControl4_Load);
-            // 
-            // gridView4
-            // 
-            this.gridView4.Appearance.ColumnFilterButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(145)))), ((int)(((byte)(75)))), ((int)(((byte)(171)))));
-            this.gridView4.Appearance.ColumnFilterButton.Options.UseBackColor = true;
-            this.gridView4.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.colvideo_name_fld,
-            this.colvideo_datetime_fld});
-            this.gridView4.GridControl = this.gridControl4;
-            this.gridView4.Name = "gridView4";
-            this.gridView4.OptionsBehavior.AutoSelectAllInEditor = false;
-            this.gridView4.OptionsBehavior.Editable = false;
-            this.gridView4.OptionsFilter.ShowAllTableValuesInFilterPopup = true;
-            this.gridView4.OptionsFilter.UseNewCustomFilterDialog = true;
-            this.gridView4.OptionsSelection.MultiSelect = true;
-            this.gridView4.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.CheckBoxRowSelect;
-            this.gridView4.OptionsView.ShowAutoFilterRow = true;
-            this.gridView4.OptionsView.ShowDetailButtons = false;
-            this.gridView4.OptionsView.ShowGroupPanel = false;
-            this.gridView4.SelectionChanged += new DevExpress.Data.SelectionChangedEventHandler(this.gridView4_SelectionChanged);
-            // 
-            // colvideo_name_fld
-            // 
-            this.colvideo_name_fld.Caption = "Videos feed list";
-            this.colvideo_name_fld.FieldName = "video_name_fld";
-            this.colvideo_name_fld.Name = "colvideo_name_fld";
-            this.colvideo_name_fld.Visible = true;
-            this.colvideo_name_fld.VisibleIndex = 2;
-            // 
-            // colvideo_datetime_fld
-            // 
-            this.colvideo_datetime_fld.Caption = "Date & Time";
-            this.colvideo_datetime_fld.FieldName = "video_datetime_fld";
-            this.colvideo_datetime_fld.Name = "colvideo_datetime_fld";
-            this.colvideo_datetime_fld.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.DateSmart;
-            this.colvideo_datetime_fld.Visible = true;
-            this.colvideo_datetime_fld.VisibleIndex = 1;
-            // 
-            // axWindowsMediaPlayer1
-            // 
-            this.axWindowsMediaPlayer1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.axWindowsMediaPlayer1.Enabled = true;
-            this.axWindowsMediaPlayer1.Location = new System.Drawing.Point(560, 363);
-            this.axWindowsMediaPlayer1.Name = "axWindowsMediaPlayer1";
-            this.axWindowsMediaPlayer1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axWindowsMediaPlayer1.OcxState")));
-            this.axWindowsMediaPlayer1.Size = new System.Drawing.Size(766, 382);
-            this.axWindowsMediaPlayer1.TabIndex = 16;
             // 
             // fkconfigtblconfigtypetblBindingSource
             // 
@@ -740,12 +736,6 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.Content.ResumeLayout(false);
-            this.online_panel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView9)).EndInit();
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -760,6 +750,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridControl4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer1)).EndInit();
+            this.online_panel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView9)).EndInit();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fkconfigtblconfigtypetblBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fkcameraconfigtblconfigtblBindingSource)).EndInit();
             this.ResumeLayout(false);
